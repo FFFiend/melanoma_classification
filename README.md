@@ -5,6 +5,7 @@
 
 # Update: 
 switching to Streamlit for deployment instead.
+I will be uploading the .ipynb and model.pkl because I'm gonna end up training the model on cloud, so perhaps the Python scripts themselves (except host.py) will be deprecated soon.
 
 # current TODO
 1) finish arch
