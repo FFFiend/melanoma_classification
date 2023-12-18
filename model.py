@@ -58,7 +58,7 @@ class MelanomaCNN(nn.Module):
         x = self.maxpool1(torch.relu(self.conv2(x)))
 
         x = self.dropout_layer(x)
-        
+
         if self.bn_1:
             x = self.bn_1(x)
         x = self.maxpool1(torch.relu(self.conv3(x)))
@@ -67,4 +67,4 @@ class MelanomaCNN(nn.Module):
         
         x = x.view(-1, self.num_channels)
         x = torch.relu(self.fc1(x))
-        pass
+        return x
