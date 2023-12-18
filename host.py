@@ -3,6 +3,8 @@ Frontend logic for streamlit.
 """
 import streamlit as lit
 import numpy as np
+from PIL import Image
+from io import BytesIO
 
 USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accurate\
     as possible, it is still no substitute to medical advice offered by a certified specialist,\
@@ -34,13 +36,15 @@ lit.title(TITLE)
 lit.warning(USAGE_WARNING_MSG)
 
 uploaded_img = lit.file_uploader(UPLOAD_STR)
-
 cam_img = lit.camera_input(CAMERA_UPLOAD_STR)
 
-if uploaded_img is not None:
-    uploaded_img = uploaded_img.getvalue()
+if cam_img is not None:
+    cam_img = np.asarray(Image.open(BytesIO(cam_img.getvalue())))
+    print(cam_img)
 
-# TODO: input is a stream of bytes, have to pass in as ndarray into _predict.
+if uploaded_img is not None:
+    uploaded_img = np.asarray(Image.open(BytesIO(uploaded_img.getvalue())))
+
 if cam_img is not None and uploaded_img is not None:
     lit.subheader(CHOICE_WARN_STR, divider=RAINBOW)
     lit.button(UPLOAD_CHOICE_STR, on_click=_predict, args=(cam_img))
