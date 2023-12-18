@@ -33,10 +33,6 @@ class MelanomaCNN(nn.Module):
             kernel_size=3
         )
 
-        self.maxpool2 = nn.MaxPool2d(
-            kernel_size=3
-        )
-
         self.conv3 = nn.Conv2d(
             in_channels = 256
         )
@@ -49,10 +45,26 @@ class MelanomaCNN(nn.Module):
         self.fc1 = nn.Linear()
         self.fc2 = nn.Linear()
 
-        self.relu = nn.ReLU()
         
 
     def forward(self, x):
-
         # TODO x.resize()
+        x = self.maxpool1(torch.relu(self.conv1(x)))
+        if self.bn_1:
+            x = self.bn_1(x)
+        x = self.maxpool1(torch.relu(self.conv1(x)))
+        if self.bn_1:
+            x = self.bn_1(x)
+        x = self.maxpool1(torch.relu(self.conv2(x)))
+
+        x = self.dropout_layer(x)
+        
+        if self.bn_1:
+            x = self.bn_1(x)
+        x = self.maxpool1(torch.relu(self.conv3(x)))
+        if self.bn_1:
+            x = self.bn_1(x)
+        
+        x = x.view(-1, self.num_channels)
+        x = torch.relu(self.fc1(x))
         pass
