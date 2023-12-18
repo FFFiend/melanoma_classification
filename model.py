@@ -14,23 +14,45 @@ class MelanomaCNN(nn.Module):
         self.num_channels = num_channels
         self.normalize_batch = normalize_batch
 
-        # TODO: veryyyy basic architecture, incomplete. Def. not enough atm,
-        # come back to this after exam.
+        # TODO: incomplete architecture, 
+        # FINAL DELIVERABLE complete on Dec 24th post exams.
 
         self.conv1 = nn.Convd2d(
             in_channels=3,
             out_channels=self.num_channels,
-            kernel_size=3,
-            padding=4
+            kernel_size=9,
+        )
+
+        self.conv2 = nn.Conv2d(
+            in_channels=self.num_channels * 2,
+            out_channels = None,
+            kernel_size = 9
+        )
+
+        self.maxpool1 = nn.MaxPool2d(
+            kernel_size=3
+        )
+
+        self.maxpool2 = nn.MaxPool2d(
+            kernel_size=3
+        )
+
+        self.conv3 = nn.Conv2d(
+            in_channels = 256
         )
 
         if normalize_batch:
             self.bn_1 = nn.BatchNorm2d(self.num_channels)
 
+        self.dropout_layer = nn.Dropout(p=0.4)
 
-        self.pooling_dim = None
-        self.pooling_layer = nn.MaxPool2d(self.pooling_dim, self.pooling_dim)
+        self.fc1 = nn.Linear()
+        self.fc2 = nn.Linear()
+
+        self.relu = nn.ReLU()
         
 
     def forward(self, x):
+
+        # TODO x.resize()
         pass
