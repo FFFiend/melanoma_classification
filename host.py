@@ -48,8 +48,8 @@ if uploaded_img is not None:
 
 if cam_img is not None and uploaded_img is not None:
     lit.subheader(CHOICE_WARN_STR, divider=RAINBOW)
-    lit.button(UPLOAD_CHOICE_STR, on_click=_predict, kwargs=uploaded_img)
-    lit.button(CAMERA_CHOICE_STR,on_click=_predict, kwargs=cam_img)
+    lit.button(UPLOAD_CHOICE_STR, on_click=_predict, kwargs=0)
+    lit.button(CAMERA_CHOICE_STR,on_click=_predict, kwargs=0)
 
 elif cam_img is not None or uploaded_img is not None:
     if uploaded_img is not None:
@@ -58,4 +58,4 @@ elif cam_img is not None or uploaded_img is not None:
     if cam_img is not None:
         final_img = cam_img
     
-    lit.button(BUTTON_LABEL,on_click=_predict,kwargs=final_img)
+    lit.button(BUTTON_LABEL,on_click=_predict,kwargs=0)
