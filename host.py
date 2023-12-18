@@ -1,3 +1,6 @@
+"""
+Frontend logic for streamlit.
+"""
 import streamlit as lit
 import numpy as np
 
