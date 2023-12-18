@@ -23,13 +23,18 @@ UPLOAD_STR="Upload your image here."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 
 MODEL = None # model.pkl TODO
+# MODEL = pickle.load(open('melanoma_CNN.pkl','rb'))
+
 def _predict(input):
-    
-    if input:
+    prediction = None
+    # prediction = MODEL(input)
+    if prediction:
         lit.warning(WARNING_MSG)
 
     else:
         lit.success(SUCCESS_MSG)
+
+    
 
 
 
