@@ -27,12 +27,12 @@ MODEL = None # model.pkl TODO
 
 def _predict(input):
     prediction = None
-    # prediction = MODEL(input)
-    if prediction:
+    
+    if prediction == 0:
+        lit.success(SUCCESS_MSG)
+    else:
         lit.warning(WARNING_MSG)
 
-    else:
-        lit.success(SUCCESS_MSG)
 
 lit.title(TITLE)
 lit.warning(USAGE_WARNING_MSG)
@@ -42,15 +42,14 @@ cam_img = lit.camera_input(CAMERA_UPLOAD_STR)
 
 if cam_img is not None:
     cam_img = np.asarray(Image.open(BytesIO(cam_img.getvalue())))
-    print(cam_img)
 
 if uploaded_img is not None:
     uploaded_img = np.asarray(Image.open(BytesIO(uploaded_img.getvalue())))
 
 if cam_img is not None and uploaded_img is not None:
     lit.subheader(CHOICE_WARN_STR, divider=RAINBOW)
-    lit.button(UPLOAD_CHOICE_STR, on_click=_predict, args=(cam_img))
-    lit.button(CAMERA_CHOICE_STR,on_click=_predict, args=(uploaded_img))
+    lit.button(UPLOAD_CHOICE_STR, on_click=_predict, kwargs=uploaded_img)
+    lit.button(CAMERA_CHOICE_STR,on_click=_predict, kwargs=cam_img)
 
 elif cam_img is not None or uploaded_img is not None:
     if uploaded_img is not None:
@@ -59,4 +58,4 @@ elif cam_img is not None or uploaded_img is not None:
     if cam_img is not None:
         final_img = cam_img
     
-    lit.button(BUTTON_LABEL,on_click=_predict, args=(final_img))
+    lit.button(BUTTON_LABEL,on_click=_predict,kwargs=final_img)
