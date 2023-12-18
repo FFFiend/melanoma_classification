@@ -4,8 +4,8 @@ Frontend logic for streamlit.
 import numpy as np
 import pickle # TODO 
 import streamlit as lit
-from PIL import Image
 from io import BytesIO
+from PIL import Image
 
 USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accurate\
     as possible, it is still no substitute to medical advice offered by a certified specialist,\
