@@ -25,7 +25,7 @@ WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 MODEL = None # model.pkl TODO
 # MODEL = pickle.load(open('melanoma_CNN.pkl','rb'))
 
-def _predict(input):
+def _predict(input=None):
     prediction = None
     
     if prediction == 0:
