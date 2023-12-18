@@ -28,7 +28,7 @@ MODEL = None # model.pkl TODO
 def _predict(input=None):
     prediction = None
     
-    if prediction == 0:
+    if prediction == 0 or prediction is None:
         lit.success(SUCCESS_MSG)
     else:
         lit.warning(WARNING_MSG)
