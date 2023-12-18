@@ -1,6 +1,9 @@
 import streamlit as lit
 import numpy as np
 
+USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accurate\
+    as possible, it is still no substitute to medical advice offered by a certified specialist,\
+        dermatologist or surgeon."
 BUTTON_LABEL="Go ahead and predict the result using the model!"
 CAMERA_CHOICE_STR = "Camera input, please."
 CAMERA_UPLOAD_STR = "Or, take a photo instead!"
@@ -25,6 +28,7 @@ def _predict(input):
 
 
 lit.title(TITLE)
+lit.warning(USAGE_WARNING_MSG)
 
 uploaded_img = lit.file_uploader(UPLOAD_STR)
 
