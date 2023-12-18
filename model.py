@@ -1,3 +1,6 @@
+"""
+Reference class for the CNN architecture used for the classifier.
+"""
 import torch
 import torch.nn as nn
 
