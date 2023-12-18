@@ -34,10 +34,6 @@ def _predict(input):
     else:
         lit.success(SUCCESS_MSG)
 
-    
-
-
-
 lit.title(TITLE)
 lit.warning(USAGE_WARNING_MSG)
 
