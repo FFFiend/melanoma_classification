@@ -19,6 +19,7 @@ PROJECT_LINK = "Find the model and project repo [here](https://github.com/FFFien
 RAINBOW="rainbow"
 SUCCESS_MSG = "Congratulations! No melanoma detected."
 TITLE = "Melanoma Classifier"
+TOAST_MSG = "Hey, scroll up!"
 UPLOAD_CHOICE_STR = "Uploaded image!"
 UPLOAD_STR="Upload your image here."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
@@ -31,6 +32,7 @@ def _predict(input=None):
     
     if prediction == 0 or prediction is None:
         lit.success(SUCCESS_MSG)
+        lit.toast(TOAST_MSG)
     else:
         lit.warning(WARNING_MSG)
 
