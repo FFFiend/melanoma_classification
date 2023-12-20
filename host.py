@@ -7,9 +7,6 @@ import streamlit as lit
 from io import BytesIO
 from PIL import Image
 
-USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accurate\
-    as possible, it is still no substitute to medical advice offered by a certified specialist,\
-        dermatologist or surgeon."
 BUTTON_LABEL="Go ahead and predict the result using the model!"
 CAMERA_CHOICE_STR = "Camera input, please."
 CAMERA_UPLOAD_STR = "Or, take a photo instead!"
@@ -22,6 +19,9 @@ TITLE = "Melanoma Classifier"
 TOAST_MSG = "Hey, scroll up!"
 UPLOAD_CHOICE_STR = "Uploaded image!"
 UPLOAD_STR="Upload your image here."
+USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accurate\
+    as possible, it is still no substitute to medical advice offered by a certified specialist,\
+        dermatologist or surgeon."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 
 MODEL = None # model.pkl TODO
