@@ -45,7 +45,6 @@ class MelanomaCNN(nn.Module):
         self.fc1 = nn.Linear()
         self.fc2 = nn.Linear()
 
-        
 
     def forward(self, x):
         # TODO x.resize()
