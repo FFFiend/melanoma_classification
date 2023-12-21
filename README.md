@@ -1,7 +1,6 @@
-# melanoma_classification
-~~Melanoma classification full stack site, model written and trained from scratch. MongoDB, Express/Node, React and Pytorch/JStorch/Jax for the model. Hosting TBD~~
+# Interactive Melanoma Classifier
 
-# Finished Deliverable Date: Dec 24 (after exams :()
+# Finished Deliverable Date: Dec 24
 # Check out the current demo [here](https://melanomas.streamlit.app)
 
 # Update: 
