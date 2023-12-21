@@ -27,9 +27,8 @@ WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 MODEL = None # model.pkl TODO
 # MODEL = pickle.load(open('melanoma_CNN.pkl','rb'))
 
-def _predict(input=None):
+def _predict(*args):
     prediction = None
-    
     if prediction == 0 or prediction is None:
         lit.success(SUCCESS_MSG)
         lit.toast(TOAST_MSG)
@@ -51,16 +50,17 @@ if uploaded_img is not None:
 
 if cam_img is not None and uploaded_img is not None:
     lit.subheader(CHOICE_WARN_STR, divider=RAINBOW)
-    lit.button(UPLOAD_CHOICE_STR, on_click=_predict, kwargs=0)
-    lit.button(CAMERA_CHOICE_STR,on_click=_predict, kwargs=0)
+    lit.button(UPLOAD_CHOICE_STR, on_click=_predict, args=(list(uploaded_img)))
+    lit.button(CAMERA_CHOICE_STR,on_click=_predict, args=(list(cam_img)))
 
 elif cam_img is not None or uploaded_img is not None:
+    final_img = None
     if uploaded_img is not None:
         final_img = uploaded_img
         
     if cam_img is not None:
         final_img = cam_img
-    
-    lit.button(BUTTON_LABEL,on_click=_predict,kwargs=0)
+
+    lit.button(BUTTON_LABEL,on_click=_predict,args=(list(final_img)))
 
 lit.markdown(PROJECT_LINK,unsafe_allow_html=True)
