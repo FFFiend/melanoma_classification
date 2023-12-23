@@ -2,9 +2,7 @@
 
 # Update: 
 Taking longer than expected as current arch and hyperparams give around 60% validation acc :/
-
-I will be uploading the .ipynb and model.pkl because I'm gonna end up training the model on cloud, so perhaps the Python scripts themselves (except host.py) will be deprecated soon.
-
+Will upload model.pkl file when I've achieved > 85% accuracy
 # current TODO
 1) train on colab (IPR)
 2) pickle dump file 
