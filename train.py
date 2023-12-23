@@ -1,61 +1,70 @@
+"""
+Training loop setup that I used for the model.
+"""
+import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
 import torch
 from accuracy_metric import accuracy
-from create_batch import collate_batch
 
-def train_model(model,                # an instance of MLPModel
-                train_data,           # training data
-                val_data,             # validation data
-                learning_rate=0.001,
-                batch_size=100,
+def train_model(model,
+                train_data,
+                valid_data,
+                batch_size=32,
+                weight_decay=0.0,
+                learning_rate=0.075,
                 num_epochs=10,
-                plot_every=50,        # how often (in # iterations) to track metrics
-                plot=True):           # whether to plot the training curve
+                plot_every=20,
+                plot=True,
+                device=torch.device("cuda:0" if torch.cuda.is_available() else "cpu")):
     train_loader = torch.utils.data.DataLoader(train_data,
                                                batch_size=batch_size,
-                                               collate_fn=collate_batch,
-                                               shuffle=True) # reshuffle minibatches every epoch
-    criterion = torch.nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
-
-    # these lists will be used to track the training progress
-    # and to plot the training curve
+                                               shuffle=True)
+    model = model.to(device) # move model to GPU if applicable
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(),
+                           lr=learning_rate,
+                           weight_decay=weight_decay)
+    # for plotting
     iters, train_loss, train_acc, val_acc = [], [], [], []
     iter_count = 0 # count the number of iterations that has passed
 
     try:
-        for e in range(num_epochs):
-            for i, (texts, labels) in enumerate(train_loader):
-                z = model(texts) # TODO
-
-                loss = criterion(z, labels) # TODO
-
-                loss.backward() # propagate the gradients
-                optimizer.step() # update the parameters
-                optimizer.zero_grad() # clean up accumualted gradients
+        for epoch in range(num_epochs):
+            for imgs, labels in iter(train_loader):
+                if imgs.size()[0] < batch_size:
+                    continue
+                labels = labels.to(device)
+                imgs = imgs.to(device)
+                model.train()
+                out = model(imgs)
+                loss = criterion(out, labels)
+                loss.backward()
+                optimizer.step()
+                optimizer.zero_grad()
 
                 iter_count += 1
                 if iter_count % plot_every == 0:
-                    iters.append(iter_count)
-                    ta = accuracy(model, train_data)
-                    va = accuracy(model, val_data)
-                    train_loss.append(float(loss))
-                    train_acc.append(ta)
-                    val_acc.append(va)
-                    print(iter_count, "Loss:", float(loss), "Train Acc:", ta, "Val Acc:", va)
-    finally:
-        if plot:
-            plt.figure()
-            plt.plot(iters[:len(train_loss)], train_loss)
-            plt.title("Loss over iterations")
-            plt.xlabel("Iterations")
-            plt.ylabel("Loss")
+                    loss = float(loss)
+                    tacc = accuracy(model, train_data, device)
+                    vacc = accuracy(model, valid_data, device)
+                    print("Iter %d; Loss %f; Train Acc %.3f; Val Acc %.3f" % (iter_count, loss, tacc, vacc))
 
-            plt.figure()
-            plt.plot(iters[:len(train_acc)], train_acc)
-            plt.plot(iters[:len(val_acc)], val_acc)
-            plt.title("Accuracy over iterations")
-            plt.xlabel("Iterations")
-            plt.ylabel("Loss")
-            plt.legend(["Train", "Validation"])
+                    iters.append(iter_count)
+                    train_loss.append(loss)
+                    train_acc.append(tacc)
+                    val_acc.append(vacc)
+    finally:
+        plt.figure()
+        plt.plot(iters[:len(train_loss)], train_loss)
+        plt.title("Loss over iterations")
+        plt.xlabel("Iterations")
+        plt.ylabel("Loss")
+
+        plt.figure()
+        plt.plot(iters[:len(train_acc)], train_acc)
+        plt.plot(iters[:len(val_acc)], val_acc)
+        plt.title("Accuracy over iterations")
+        plt.xlabel("Iterations")
+        plt.ylabel("Accuracy")
+        plt.legend(["Train", "Validation"])

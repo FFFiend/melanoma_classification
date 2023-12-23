@@ -1,3 +1,6 @@
+"""
+Accuracy function that I used to evaluate the model.
+"""
 import torch
 def accuracy(model, data, device="cuda:0"):
     """
