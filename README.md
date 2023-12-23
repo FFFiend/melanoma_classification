@@ -2,7 +2,7 @@
 
 # Update: 
 Dec 24th deliverable date.
-Though, Might take longer, current arch and hyperparams give around 60% validation acc :/
+Though it may take longer as current arch and hyperparams give around 60% validation acc :/
 
 I will be uploading the .ipynb and model.pkl because I'm gonna end up training the model on cloud, so perhaps the Python scripts themselves (except host.py) will be deprecated soon.
 
