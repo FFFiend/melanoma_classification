@@ -1,5 +1,5 @@
 """
-IMPORTANT! Find site deployed at: 
+IMPORTANT! Find site deployed at: https://melanomas.streamlit.app
 Reference class for the CNN architecture used for the classifier.
 """
 import torch
