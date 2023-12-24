@@ -1,11 +1,11 @@
 """
 Frontend logic for streamlit.
 """
-#import torch
+import torch
 import numpy as np
 import streamlit as lit
 from io import BytesIO
-#from model import MelanomaCNN
+from model import MelanomaCNN
 from PIL import Image
 
 BUTTON_LABEL="Go ahead and predict the result using the model!"
@@ -25,9 +25,9 @@ USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accur
         dermatologist or surgeon."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 
-#MODEL = MelanomaCNN()
-#MODEL.load_state_dict(torch.load("model.pt",map_location=torch.device("cpu")))
-#MODEL.eval()
+MODEL = MelanomaCNN()
+MODEL.load_state_dict(torch.load("model.pt",map_location=torch.device("cpu")))
+MODEL.eval()
 
 def _predict(*args):
     prediction=0
@@ -36,8 +36,8 @@ def _predict(*args):
         img.append(row)
     img = np.array(img)
     img = np.transpose(img, (2, 0, 1))
-    #prediction = MODEL(torch.from_numpy(img.astype(np.float32)).unsqueeze(0))
-    #prediction = prediction.max(1, keepdim=True)[1]
+    prediction = MODEL(torch.from_numpy(img.astype(np.float32)).unsqueeze(0))
+    prediction = prediction.max(1, keepdim=True)[1]
     if prediction==0:
         lit.success(SUCCESS_MSG)
         lit.toast(TOAST_MSG)
