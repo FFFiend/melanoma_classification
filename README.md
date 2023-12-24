@@ -1,4 +1,4 @@
-# Interactive Melanoma Classifier (Deployed [here](https://melanomas.streamlit.app))
+# Interactive Melanoma Classifier (Completed & Deployed [here](https://melanomas.streamlit.app))
 This is a classifier based on a CNN model that I wrote myself, achieves around 80-85% accuracy on the 
 following [dataset](https://www.kaggle.com/datasets/hasnainjaved/melanoma-skin-cancer-dataset-of-10000-images/data).
 
