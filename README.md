@@ -8,3 +8,7 @@ Here are the Training and Validation/Testing accuracies on the dataset:
 ![Training loss](assets/train.png)
 ![Test/Validation](assets/accuracy.png)
 
+# Improvements
+Use max pooling on larger inputs instead of cropping from center
+Use padding for images smaller than 300x300.
+
