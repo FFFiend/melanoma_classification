@@ -3,6 +3,7 @@ Frontend logic for streamlit.
 """
 #import torch
 import numpy as np
+import matplotlib.pyplot as plt
 import streamlit as lit
 from io import BytesIO
 #from model import MelanomaCNN
