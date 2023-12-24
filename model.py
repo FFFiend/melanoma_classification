@@ -1,4 +1,5 @@
 """
+IMPORTANT! Find site deployed at: 
 Reference class for the CNN architecture used for the classifier.
 """
 import torch
