@@ -6,7 +6,7 @@ import numpy as np
 import streamlit as lit
 from io import BytesIO
 from PIL import Image
-from model import MelanomaCNN
+#from model import MelanomaCNN
 BUTTON_LABEL="Go ahead and predict the result using the model!"
 CAMERA_CHOICE_STR = "Camera input, please."
 CAMERA_UPLOAD_STR = "Or, take a photo instead!"
