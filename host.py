@@ -24,11 +24,10 @@ USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accur
         dermatologist or surgeon."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 
-MODEL = None # model.pkl TODO
-# MODEL = pickle.load(open('melanoma_CNN.pkl','rb'))
+MODEL = pickle.load(open('model.pkl','rb'))
 
 def _predict(*args):
-    prediction = None
+    prediction = MODEL(args)
     if prediction == 0 or prediction is None:
         lit.success(SUCCESS_MSG)
         lit.toast(TOAST_MSG)
