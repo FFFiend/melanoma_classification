@@ -1,6 +1,6 @@
 # Interactive Melanoma Classifier (Demo [here](https://melanomas.streamlit.app))
 Training and Validation accuracies on the dataset:
-[Training loss](Screen Shot 2023-12-24 at 3.32.51 AM.png)
+[Training loss](melanoma_classification/Screen Shot 2023-12-24 at 3.32.51 AM.png)
 [Validation/Testing accuracy](Screen Shot 2023-12-24 at 3.32.51 AM.png)
 
 # Update: 
