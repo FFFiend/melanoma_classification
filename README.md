@@ -9,6 +9,5 @@ Here are the Training and Validation/Testing accuracies on the dataset:
 ![Test/Validation](assets/accuracy.png)
 
 # Improvements
-Use max pooling on larger inputs instead of cropping from center
-Use padding for images smaller than 300x300.
+Use max pooling on larger inputs instead of cropping from center and padding for images smaller than 300x300.
 
