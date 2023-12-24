@@ -6,6 +6,6 @@ The entire training process (epoch #, batch sizes, etc) can be seen inside the .
 
 IMPORTANT: Imports are messing with Streamlit so the model is decoupled from the frontend atm, working on a fix.
 In the meantime, here are the Training and Validation/Testing accuracies on the dataset:
-![Training loss](train.png)
-![Test/Validation](accuracy.png)
+![Training loss](assets/train.png)
+![Test/Validation](assets/accuracy.png)
 

@@ -25,7 +25,7 @@ USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accur
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 
 #MODEL = MelanomaCNN()
-#MODEL.load_state_dict(torch.load("model.pt",map_location=torch.device("cpu")))
+#MODEL.load_state_dict(torch.load("model/model.pt",map_location=torch.device("cpu")))
 #MODEL.eval()
 
 def _predict(*args):
