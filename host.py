@@ -22,9 +22,9 @@ UPLOAD_STR="Upload your image here."
 USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accurate\
     as possible, it is still no substitute to medical advice offered by a certified specialist,\
         dermatologist or surgeon.\
-            \n\nAdditionally, this model was trained on a set of 300x300 images, and so camera inputs\
-                are cropped to the aforementioned resolution, which might make camera input classification\
-                    a bit iffy."
+            \n\nAdditionally, this model was trained on a set of 300x300 images, and so inputs\
+                are cropped to the aforementioned resolution for now, which might make classification\
+                    on camera inputs a bit iffy."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 
 MODEL = MelanomaCNN()
