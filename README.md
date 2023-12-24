@@ -1,8 +1,8 @@
 # Interactive Melanoma Classifier (Demo [here](https://melanomas.streamlit.app))
 
 # Update: 
-Taking longer than expected as current arch and hyperparams give around 60% validation acc :/
-Will upload model.pkl file when I've achieved > 85% accuracy
+Latest model architecture (model.py) showing promising results (>= 80% on testing set),
+uploading model.pkl soon.
 # current TODO
 1) train on colab (IPR)
 2) pickle dump file 
