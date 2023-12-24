@@ -6,6 +6,7 @@ import torch.nn as nn
 import numpy as np
 import streamlit as lit
 from io import BytesIO
+from model import MelanomaCNN
 from PIL import Image
 
 BUTTON_LABEL="Go ahead and predict the result using the model!"
@@ -25,94 +26,7 @@ USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accur
         dermatologist or surgeon."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 
-class _MelanomaCNN(nn.Module):
-    def __init__(self, width=3):
-        """
-        Init method for the model.
-        """
-        super(MelanomaCNN, self).__init__()
-        self.width = width
-        self.maxpool_layer = nn.MaxPool2d(2,2)
-        #self.maxpool_layer.cuda()
-        # first conv2d layer
-        self.conv1 = nn.Conv2d(
-            in_channels=self.width,
-            out_channels=3,
-            kernel_size=3,
-        )
-        #self.conv1.cuda()
-
-        self.temp = nn.Conv2d(
-            in_channels=3,
-            out_channels=6,
-            kernel_size=3
-        )
-        #self.temp.cuda()
-
-        self.conv2 = nn.Conv2d(
-            in_channels=6,
-            out_channels=12,
-            kernel_size=3
-        )
-        #self.conv2.cuda()
-
-        self.conv3 = nn.Conv2d(
-            in_channels=12,
-            out_channels=12,
-            kernel_size=3
-        )
-        #self.conv3.cuda()
-
-        self.conv4 = nn.Conv2d(
-            in_channels=12,
-            out_channels=24,
-            kernel_size=3
-        )
-        #self.conv4.cuda()
-
-        self.conv5 = nn.Conv2d(
-            in_channels=24,
-            out_channels=36,
-            kernel_size=3
-        )
-        #self.conv5.cuda()
-
-        self.fc1 = nn.Linear(144,100)
-        #self.fc1.cuda()
-        self.fc2 = nn.Linear(100,2)
-        #self.fc2.cuda()
-
-        # final output should be batch size * 2
-
-    def forward(self,x):
-        x = torch.nn.functional.normalize(x,p=3)
-        x = self.maxpool_layer(torch.relu(self.conv1(x)))
-        #x.cuda()
-
-        x = self.maxpool_layer(torch.relu(self.temp(x)))
-        #x.cuda()
-
-        x = self.maxpool_layer(torch.relu(self.conv2(x)))
-        #x.cuda()
-
-        x = self.maxpool_layer(torch.relu(self.conv3(x)))
-        #x.cuda()
-
-        x = self.maxpool_layer(torch.relu(self.conv4(x)))
-        #x.cuda()
-
-        x = self.maxpool_layer(torch.relu(self.conv5(x)))
-        #x.cuda()
-        # flatten the image.
-        x = x.view(x.shape[0],-1)
-        #x.cuda()
-
-        # might swap relu out for smth else
-        x = torch.relu(self.fc1(x))
-        #x.cuda()
-        return torch.sigmoid(self.fc2(x))
-
-MODEL = _MelanomaCNN()
+MODEL = MelanomaCNN()
 MODEL.load_state_dict(torch.load("model.pt",map_location=torch.device("cpu")))
 MODEL.eval()
 
@@ -123,8 +37,8 @@ def _predict(*args):
         img.append(row)
     img = np.array(img)
     img = np.transpose(img, (2, 0, 1))
-    prediction = MODEL(torch.from_numpy(img.astype(np.float32)).unsqueeze(0))
-    prediction = prediction.max(1, keepdim=True)[1]
+    #prediction = MODEL(torch.from_numpy(img.astype(np.float32)).unsqueeze(0))
+    #prediction = prediction.max(1, keepdim=True)[1]
     if prediction==0:
         lit.success(SUCCESS_MSG)
         lit.toast(TOAST_MSG)
