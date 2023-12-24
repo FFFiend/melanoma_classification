@@ -1,7 +1,7 @@
 """
 Frontend logic for streamlit.
 """
-#import torch
+import torch
 import numpy as np
 import streamlit as lit
 from io import BytesIO
