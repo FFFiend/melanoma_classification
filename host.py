@@ -36,6 +36,7 @@ def _predict(*args):
     img = np.transpose(img, (2, 0, 1))
     prediction = MODEL(torch.from_numpy(img.astype(np.float32)).unsqueeze(0))
     prediction = prediction.max(1, keepdim=True)[1]
+    lit.write(prediction)
     if prediction==0:
         lit.success(SUCCESS_MSG)
         lit.toast(TOAST_MSG)
