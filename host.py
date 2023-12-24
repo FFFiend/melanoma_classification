@@ -29,14 +29,14 @@ MODEL.load_state_dict(torch.load("model.pt",map_location=torch.device("cpu")))
 MODEL.eval()
 
 def _predict(*args):
+    prediction=0
     img = []
     for row in args:
         img.append(row)
     img = np.array(img)
     img = np.transpose(img, (2, 0, 1))
-    prediction = MODEL(torch.from_numpy(img.astype(np.float32)).unsqueeze(0))
-    prediction = prediction.max(1, keepdim=True)[1]
-    lit.write(prediction)
+    #prediction = MODEL(torch.from_numpy(img.astype(np.float32)).unsqueeze(0))
+    #prediction = prediction.max(1, keepdim=True)[1]
     if prediction==0:
         lit.success(SUCCESS_MSG)
         lit.toast(TOAST_MSG)
