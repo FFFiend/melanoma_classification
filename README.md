@@ -5,5 +5,5 @@ In the meantime, here are the Training and Validation/Testing accuracies on the 
 ![Test/Validation](accuracy.png)
 
 # About
-This is a classifier based on a CNN model that I wrote myself. 
-
+This is a classifier based on a CNN model that I wrote myself, achives around 80-85% accuracy on the 
+following [dataset](https://www.kaggle.com/datasets/hasnainjaved/melanoma-skin-cancer-dataset-of-10000-images/data).
