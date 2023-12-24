@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "melanoma-classification"
+version = "0.1.0"
+description = "melanoma classifier from scratch, hosted on streamlit"
+authors = ["FFFiend <owais.zahid@mail.utoronto.ca>"]
+license = "Apache 2.0"
+readme = "README.md"
+packages = [{include = "melanoma_classification"}]
+
+[tool.poetry.dependencies]
+python = "^3.9.6"
+torch = "^2.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
