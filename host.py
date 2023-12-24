@@ -43,6 +43,19 @@ def _crop_center(img, crop_size):
     cropped_img = img[start_h:start_h + crop_size[0], start_w:start_w + crop_size[1], :]
     return cropped_img
     
+def _pad(img, target_size):
+    h, w, c = img.shape
+    pad_h = max(0, target_size[0] - h)
+    pad_w = max(0, target_size[1] - w)
+
+    pad_top = pad_h // 2
+    pad_bottom = pad_h - pad_top
+    pad_left = pad_w // 2
+    pad_right = pad_w - pad_left
+
+    padded_img = np.pad(img, ((pad_top, pad_bottom), (pad_left, pad_right), (0, 0)), mode='constant')
+    return padded_img
+
 def _predict(*args):
     prediction=0
     img = []
@@ -51,6 +64,8 @@ def _predict(*args):
     img = np.array(img)
     if (img.shape[0]*img.shape[1] > 300*300):
         img = _crop_center(img, (300,300,3))
+    elif (img.shape[0]*img.shape[1] < 300*300):
+        img = _pad(img, (300,300,3))
     img = np.transpose(img, (2, 0, 1))
     prediction = MODEL(torch.from_numpy(img.astype(np.float32)).unsqueeze(0))
     prediction = prediction.max(1, keepdim=True)[1]
