@@ -5,7 +5,7 @@ Frontend logic for streamlit.
 import numpy as np
 import streamlit as lit
 from io import BytesIO
-from model import MelanomaCNN
+#from model import MelanomaCNN
 from PIL import Image
 BUTTON_LABEL="Go ahead and predict the result using the model!"
 CAMERA_CHOICE_STR = "Camera input, please."
