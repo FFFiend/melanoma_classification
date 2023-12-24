@@ -7,7 +7,7 @@ import streamlit as lit
 from io import BytesIO
 from model import MelanomaCNN
 from PIL import Image
-BEST_RESULT_MSG = "TIP: For best results, bring the suspect mole as close to the camera as you can"
+BEST_RESULT_MSG = "TIP: For best results, bring the suspect mole as close to the camera as you can."
 BUTTON_LABEL="Go ahead and predict the result using the model!"
 CAMERA_CHOICE_STR = "Camera input, please."
 CAMERA_UPLOAD_STR = "Or, take a photo instead!"
