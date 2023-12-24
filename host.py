@@ -1,12 +1,12 @@
 """
 Frontend logic for streamlit.
 """
+import torch
 import numpy as np
-import pickle # TODO 
 import streamlit as lit
 from io import BytesIO
 from PIL import Image
-
+from model import MelanomaCNN
 BUTTON_LABEL="Go ahead and predict the result using the model!"
 CAMERA_CHOICE_STR = "Camera input, please."
 CAMERA_UPLOAD_STR = "Or, take a photo instead!"
@@ -24,16 +24,23 @@ USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accur
         dermatologist or surgeon."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 
-MODEL = pickle.load(open('model.pkl','rb'))
+MODEL = MelanomaCNN()
+MODEL.load_state_dict(torch.load("model.pt",map_location=torch.device("cpu")))
+MODEL.eval()
 
 def _predict(*args):
-    prediction = MODEL(args)
-    if prediction == 0 or prediction is None:
+    img = []
+    for row in args:
+        img.append(row)
+    img = np.array(img)
+    img = np.transpose(img, (2, 0, 1))
+    prediction = MODEL(torch.from_numpy(img.astype(np.float32)).unsqueeze(0))
+    prediction = prediction.max(1, keepdim=True)[1]
+    if prediction==0:
         lit.success(SUCCESS_MSG)
         lit.toast(TOAST_MSG)
     else:
         lit.warning(WARNING_MSG)
-
 
 lit.title(TITLE,anchor="https://github.com/FFFiend/melanoma_classification")
 lit.warning(USAGE_WARNING_MSG)
