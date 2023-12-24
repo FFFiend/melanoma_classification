@@ -28,6 +28,13 @@ MODEL = MelanomaCNN()
 MODEL.load_state_dict(torch.load("model/model.pt",map_location=torch.device("cpu")))
 MODEL.eval()
 
+def _crop_center(img, crop_size):
+    h, w, _ = img.shape
+    start_h = (h - crop_size[0]) // 2
+    start_w = (w - crop_size[1]) // 2
+    cropped_img = img[start_h:start_h + crop_size[0], start_w:start_w + crop_size[1], :]
+    return cropped_img
+    
 def _predict(*args):
     prediction=0
     img = []
@@ -35,10 +42,7 @@ def _predict(*args):
         img.append(row)
     img = np.array(img)
     if (img.shape[0]*img.shape[1] > 300*300):
-        img = img[:301]
-        for i in range(len(img)):
-            img[i] = img[i][:300]
-            
+        img = _crop_center(img, (300,300,3))
     img = np.transpose(img, (2, 0, 1))
     prediction = MODEL(torch.from_numpy(img.astype(np.float32)).unsqueeze(0))
     prediction = prediction.max(1, keepdim=True)[1]
