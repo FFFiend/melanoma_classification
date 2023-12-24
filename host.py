@@ -62,6 +62,8 @@ def _predict(*args):
     for row in args:
         img.append(row)
     img = np.array(img)
+    if img.shape[2] > 3: 
+        img = img[:, :, :3]
     if (img.shape[0]*img.shape[1] > 300*300):
         img = _crop_center(img, (300,300,3))
     elif (img.shape[0]*img.shape[1] < 300*300):
