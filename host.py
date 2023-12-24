@@ -61,11 +61,12 @@ def _predict(*args):
         lit.warning(WARNING_MSG)
 
 lit.title(TITLE)
-lit.success(BEST_RESULT_MSG)
 lit.warning(USAGE_WARNING_MSG)
 
 uploaded_img = lit.file_uploader(UPLOAD_STR)
 cam_img = lit.camera_input(CAMERA_UPLOAD_STR)
+lit.success(BEST_RESULT_MSG)
+
 
 if cam_img is not None:
     cam_img = np.asarray(Image.open(BytesIO(cam_img.getvalue())))
