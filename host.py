@@ -1,8 +1,7 @@
 """
 Frontend logic for streamlit.
 """
-import torch
-import torch.nn as nn
+#import torch
 import numpy as np
 import streamlit as lit
 from io import BytesIO
@@ -26,9 +25,9 @@ USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accur
         dermatologist or surgeon."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 
-MODEL = MelanomaCNN()
-MODEL.load_state_dict(torch.load("model.pt",map_location=torch.device("cpu")))
-MODEL.eval()
+#MODEL = MelanomaCNN()
+#MODEL.load_state_dict(torch.load("model.pt",map_location=torch.device("cpu")))
+#MODEL.eval()
 
 def _predict(*args):
     prediction=0
