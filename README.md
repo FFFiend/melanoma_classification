@@ -4,8 +4,7 @@ following [dataset](https://www.kaggle.com/datasets/hasnainjaved/melanoma-skin-c
 
 The entire training process (epoch #, batch sizes, etc) can be seen inside the .ipynb file in the training folder, the architecture itself is in model.py and my trained weights are in ```model```. Feel free to look around.
 
-IMPORTANT: Imports are messing with Streamlit so the model is decoupled from the frontend atm, working on a fix.
-In the meantime, here are the Training and Validation/Testing accuracies on the dataset:
+Here are the Training and Validation/Testing accuracies on the dataset:
 ![Training loss](assets/train.png)
 ![Test/Validation](assets/accuracy.png)
 
