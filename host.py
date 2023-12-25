@@ -107,3 +107,4 @@ elif cam_img is not None or uploaded_img is not None:
     lit.button(BUTTON_LABEL,on_click=_predict,args=(list(final_img)))
 
 lit.markdown(PROJECT_LINK,unsafe_allow_html=True)
+lit.warning("Was your image misclassified? In general, benign/malignant melanoma images of size 300x300 work best")
