@@ -13,7 +13,7 @@ CAMERA_CHOICE_STR = "Camera input, please."
 CAMERA_UPLOAD_STR = "Or, take a photo instead!"
 CHOICE_WARN_STR = "Choose between the camera or the file input. The option you\
         choose first will be the input that the model predicts on."
-PROJECT_LINK = "Find the model and project repo [here](https://github.com/FFFiend/melanoma_classification)"
+PROJECT_LINK = "Find the model and project repo [here](https://github.com/FFFiend/melanoma_classification)."
 RAINBOW="rainbow"
 SUCCESS_MSG = "Congratulations! No melanoma detected."
 TITLE = "Melanoma Classifier 🧪 🧬"
@@ -107,4 +107,3 @@ elif cam_img is not None or uploaded_img is not None:
     lit.button(BUTTON_LABEL,on_click=_predict,args=(list(final_img)))
 
 lit.markdown(PROJECT_LINK,unsafe_allow_html=True)
-lit.warning("Was your image misclassified? In general, benign/malignant melanoma images of size 300x300 work best")
