@@ -23,7 +23,7 @@ UPLOAD_STR="Upload your image here."
 USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accurate\
     as possible, it is still no substitute to medical advice offered by a certified specialist,\
         dermatologist or surgeon.\
-        \n\nIMPORTANT: Be sure to bring the concerned area of skin as close to the camera as possible for best results.\
+        \n\nIMPORTANT: Be sure to bring the concerned area of skin as close to the camera (with adequate lighting) as possible for best results.\
         \n\n Based on the model's current training, there will be a high misclassification rate on non-skin images until\
         further transfer learning."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
