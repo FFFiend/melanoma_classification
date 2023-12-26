@@ -7,7 +7,7 @@ import streamlit as lit
 from io import BytesIO
 from model import MelanomaCNN
 from PIL import Image
-BEST_RESULT_MSG = "TIP: For best results, bring the suspect mole as close to the camera as you can."
+BEST_RESULT_MSG = "REMINDER: For best results, bring the suspect mole / skin area as close to the camera as you can."
 BUTTON_LABEL="Go ahead and predict the result using the model!"
 CAMERA_CHOICE_STR = "Camera input, please."
 CAMERA_UPLOAD_STR = "Or, take a photo instead!"
@@ -23,13 +23,7 @@ UPLOAD_STR="Upload your image here."
 USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accurate\
     as possible, it is still no substitute to medical advice offered by a certified specialist,\
         dermatologist or surgeon.\
-            \n\nAdditionally, this model was trained on a set of 300x300 benign/malignant melanoma images, and so inputs\
-                are cropped to the aforementioned resolution for now, which might make classification\
-                    on camera inputs a bit iffy.\
-            \n\nIMPORTANT: Also note that the model currently suffers from the Open Set classification problem\
-            meaning that until further training/transfer learning, the model has a high misclassification\
-                rate on images that AREN'T of either benign or malignant melanomas. Actively working on\
-                    adding this enhancement."
+        \n\nIMPORTANT: Be sure to bring the concerned area of skin as close to the camera as possible for best results."
 WARNING_MSG = "Uh oh, looks like this tested positive for melanoma."
 
 MODEL = MelanomaCNN()
