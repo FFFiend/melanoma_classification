@@ -19,7 +19,7 @@ SUCCESS_MSG = "Congratulations! No melanoma detected."
 TITLE = "Melanoma Classifier 🧪 🧬"
 TOAST_MSG = "Hey, scroll up!"
 UPLOAD_CHOICE_STR = "Uploaded image!"
-UPLOAD_STR="Upload your image here."
+UPLOAD_STR = "Upload your image here."
 USAGE_WARNING_MSG = "Please note that while this classifier tries to be as accurate\
     as possible, it is still no substitute to medical advice offered by a certified specialist,\
         dermatologist or surgeon.\
