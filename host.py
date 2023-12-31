@@ -13,6 +13,7 @@ CAMERA_CHOICE_STR = "Camera input, please."
 CAMERA_UPLOAD_STR = "Or, take a photo instead!"
 CHOICE_WARN_STR = "Choose between the camera or the file input. The option you\
         choose first will be the input that the model predicts on."
+INFO_STR = "Based on a CNN model I wrote and trained myself, contact owais.zahid@mail.utoronto.ca for any questions."
 PROJECT_LINK = "Find the model and project repo [here](https://github.com/FFFiend/melanoma_classification)."
 RAINBOW="rainbow"
 SUCCESS_MSG = "Congratulations! No melanoma detected."
@@ -103,4 +104,4 @@ elif cam_img is not None or uploaded_img is not None:
     lit.button(BUTTON_LABEL,on_click=_predict,args=(list(final_img)))
 
 lit.markdown(PROJECT_LINK,unsafe_allow_html=True)
-lit.markdown("Based on a CNN model I wrote and trained myself, contact owais.zahid@mail.utoronto.ca for any questions.")
+lit.markdown(INFO_STR)
