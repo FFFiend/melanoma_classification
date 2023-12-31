@@ -74,7 +74,6 @@ def _predict(*args):
         lit.warning(WARNING_MSG)
 
 lit.title(TITLE)
-lit.markdown("Based on a CNN model I wrote and trained myself, contact owais.zahid@mail.utoronto.ca for any questions.")
 lit.warning(USAGE_WARNING_MSG)
 
 uploaded_img = lit.file_uploader(UPLOAD_STR)
@@ -104,3 +103,4 @@ elif cam_img is not None or uploaded_img is not None:
     lit.button(BUTTON_LABEL,on_click=_predict,args=(list(final_img)))
 
 lit.markdown(PROJECT_LINK,unsafe_allow_html=True)
+lit.markdown("Based on a CNN model I wrote and trained myself, contact owais.zahid@mail.utoronto.ca for any questions.")
