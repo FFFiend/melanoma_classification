@@ -74,6 +74,7 @@ def _predict(*args):
         lit.warning(WARNING_MSG)
 
 lit.title(TITLE)
+lit.write("Based on a CNN model I wrote and trained myself, contact owais.zahid@mail.utoronto.ca for any questions.")
 lit.warning(USAGE_WARNING_MSG)
 
 uploaded_img = lit.file_uploader(UPLOAD_STR)
